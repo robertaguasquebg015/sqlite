@@ -1,7 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import * as SQLite from 'expo-sqlite';
 
+interface Tarefa {
+  id: number;
+  nome: string;
+}
 export default function App() {
+  const [banco, setBanco] = useState<SQLite.SQLiteDatabase | null>(null);
+  const [Tarefa, setTarefa] = useState<string>('');
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
